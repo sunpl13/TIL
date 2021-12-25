@@ -299,26 +299,240 @@ target.match(regExp); // -> ["color", "colour"]
 
 <br/>
 
-<br/>
+## 4. OR 검색
+
+> ### |는 or의 의미를 갖는다.
 
 <br/>
 
-<br/>
+```javascript
+const target = "A AA B BB Aa Bb";
+
+// 'A' 또는 'B'를 전역 검색한다.
+const regExp = /A|B/g;
+
+target.match(regExp); // -> ["A", "A", "A", "B", "B", "B", "A", "B"]
+```
 
 <br/>
 
-<br/>
+> ### 분해되지 않은 단어 레벨로 검색하기 위해서는 +를 함께 사용
 
 <br/>
 
-<br/>
+```javascript
+const target = "A AA B BB Aa Bb";
+
+// 'A' 또는 'B'가 한 번 이상 반복되는 문자열을 전역 검색한다.
+// 'A', 'AA', 'AAA', ... 또는 'B', 'BB', 'BBB', ...
+const regExp = /A+|B+/g;
+
+target.match(regExp); // -> ["A", "AA", "B", "BB", "A", "B"]
+```
 
 <br/>
 
-<br/>
+> ### 위 |를 []를 사용하여 동일하게 동작할 수 있다.
+
+```javascript
+const target = "A AA B BB Aa Bb";
+
+// 'A' 또는 'B'가 한 번 이상 반복되는 문자열을 전역 검색한다.
+// 'A', 'AA', 'AAA', ... 또는 'B', 'BB', 'BBB', ...
+const regExp = /[AB]+/g;
+
+target.match(regExp); // -> ["A", "AA", "B", "BB", "A", "B"]
+```
 
 <br/>
 
+> ### -를 사용해서 []의 범위를 지정할 수 있다.
+
 <br/>
+
+```javascript
+const target = "A AA BB ZZ Aa Bb";
+const target1 = "AA BB Aa Bb 12";
+
+// 'A' ~ 'Z'가 한 번 이상 반복되는 문자열을 전역 검색한다.
+// 'A', 'AA', 'AAA', ... 또는 'B', 'BB', 'BBB', ... ~ 또는 'Z', 'ZZ', 'ZZZ', ...
+const regExp = /[A-Z]+/g;
+const regExp1 = /[A-Za-z]+/g; //대소문자를 구별하지 않고 알파벳을 검색
+
+target.match(regExp); // -> ["A", "AA", "BB", "ZZ", "A", "B"]
+target1.match(regExp1); // -> ["AA", "BB", "Aa", "Bb"]
+```
+
+<br/>
+
+> ### 숫자 검색
+
+<br/>
+
+```javascript
+const target = "AA BB 12,345";
+
+// '0' ~ '9'가 한 번 이상 반복되는 문자열을 전역 검색한다.
+const regExp = /[0-9]+/g;
+
+target.match(regExp); // -> ["12", "345"]
+```
+
+<br/>
+
+> ### \d를 사용하여 숫자를 간편히 표현할 수 있다.(\d = [0-9])
+>
+> ### \D는 숫자가 아닌 문자를 의미(\d와 정확히 반대)
+
+<br/>
+
+```javascript
+const target = "AA BB 12,345";
+
+// '0' ~ '9' 또는 ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
+let regExp = /[\d,]+/g;
+
+target.match(regExp); // -> ["12,345"]
+
+// '0' ~ '9'가 아닌 문자(숫자가 아닌 문자) 또는 ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
+regExp = /[\D,]+/g;
+
+target.match(regExp); // -> ["AA BB ", ","]
+```
+
+<br/>
+
+> ### \w는 알파벳, 숫자, 언더스코어를 의미(\w = [A-za-z0-9_])
+>
+> ### \W는 알파벳, 숫자, 언더스코어가 아닌 문자를 의미(\w와 정확히 반대)
+
+<br/>
+
+```javascript
+const target = "Aa Bb 12,345 _$%&";
+
+// 알파벳, 숫자, 언더스코어, ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
+let regExp = /[\w,]+/g;
+
+target.match(regExp); // -> ["Aa", "Bb", "12,345", "_"]
+
+// 알파벳, 숫자, 언더스코어가 아닌 문자 또는 ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
+regExp = /[\W,]+/g;
+
+target.match(regExp); // -> [" ", " ", ",", " $%&"]
+```
+
+<br/>
+
+## 5. NOT 검색
+
+> ### []내의 ^는 not의 의미를 갖는다.
+
+- ### \D는 [^0-9]와 동일
+- ### \W는 [^a-za-z0-9_]와 동일
+
+<br/>
+
+```javascript
+const target = "AA BB 12 Aa Bb";
+
+// 숫자를 제외한 문자열을 전역 검색한다.
+const regExp = /[^0-9]+/g;
+
+target.match(regExp); // -> ["AA BB ", " Aa Bb"]
+```
+
+<br/>
+
+## 6. 시작 위치로 검색
+
+> ### [] 밖의 ^는 문자열의 시작을 의미
+
+<br/>
+
+```javascript
+const target = "https://poiemaweb.com";
+
+// 'https'로 시작하는지 검사한다.
+const regExp = /^https/;
+
+regExp.test(target); // -> true
+```
+
+<br/>
+
+## 7. 마지막 위치로 검색
+
+> ### $는 문자열의 마지막을 의미
+
+<br/>
+
+```javascript
+const target = "https://poiemaweb.com";
+
+// 'com'으로 끝나는지 검사한다.
+const regExp = /com$/;
+
+regExp.test(target); // -> true
+```
+
+<br/>
+<br/>
+
+# 6. 자주 사용하는 정규표현식
+
+## 1. 특정 단어로 시작하는지 검사
+
+<br/>
+
+```javascript
+const url = "https://example.com";
+
+// 'http://' 또는 'https://'로 시작하는지 검사한다.
+//^는 문자열의 시작을 의미, ?는 앞선 패턴이 최대 한번 ,
+/^https?:\/\//.test(url); // -> true
+```
+
+<br/>
+
+## 2. 특정 단어로 끝나는지 검사
+
+<br/>
+
+```javascript
+const fileName = "index.html";
+
+// 'html'로 끝나는지 검사한다.
+/html$/.test(fileName); // -> true
+```
+
+<br/>
+
+## 3. 숫자로만 이루어진 문자열인지 검사
+
+<br/>
+
+```javascript
+const target = "12345";
+
+// 숫자로만 이루어진 문자열인지 검사한다.
+//^는 문자열의 시작을, $는 문자열의 마지막을 의미, \d는 숫자를 의미,+는 앞선 패턴이 최소 한번이상 반복
+// 처음과 끝이 숫자이고 최소 한 번 이상 반복되는 문자열
+/^\d+$/.test(target); // -> true
+```
+
+<br/>
+
+## 4. 하나 이상의 공백으로 시작하는지 검사
+
+<br/>
+
+```javascript
+const target = " Hi!";
+
+// 하나 이상의 공백으로 시작하는지 검사한다.
+// \s는 여러가지 공백 분자를 의미
+/^[\s]+/.test(target); // -> true
+```
 
 <br/>
