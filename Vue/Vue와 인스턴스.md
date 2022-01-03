@@ -14,10 +14,13 @@ var vm = new Vue({...})
 
 ## Vue 인스턴스에서 사용할 수 있는 속성과 API
 
-- ### el : 인스턴스가 그려지는 화면의 시작점 (특정 HTML 태그)
-- ### template : 화면에 표시할 요소 (HTML, CSS등)
-- ### data : 뷰의 반응성(Reactivity)이 반영된 데이터 속성
-- ### methods : 화면의 동작과 이벤트로 로직을 제어하는 메소드
+### - el : 인스턴스가 그려지는 화면의 시작점 (특정 HTML 태그)
+
+### - template : 화면에 표시할 요소 (HTML, CSS등)
+
+### - data : 뷰의 반응성(Reactivity)이 반영된 데이터 속성
+
+### - methods : 화면의 동작과 이벤트로 로직을 제어하는 메소드
 
 <br/>
 
