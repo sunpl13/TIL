@@ -10,6 +10,10 @@
 
 `프로젝트의 파일들을 수정하고 작업하고 있는 공간`
 
+![git life sycle](https://user-images.githubusercontent.com/68778883/150938117-a68c3e4a-e716-44d6-8390-0c9a1143846c.png)
+
+
+
 - `untracked`와 `tracked`로 나뉘어짐
 - **untracked** : 새로 만들어졌거나 기존에 존재하지 않던 파일들
 - **tracked** : git이 이미 알고 참조하는 파일들
