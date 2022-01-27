@@ -18,6 +18,7 @@
      - git commit -am : git add . + git commit -m과 동일
   <br/>
   <br/>
+  
      - ### commit Tip
         - 커밋 단위는 작게 세분화해서 커밋
         - 커밋 메세지는 현재형으로
