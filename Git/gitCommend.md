@@ -9,7 +9,7 @@
      - git add *.확장자 : 특정 확장자 모두를 staging area로 이동
      - git add . : 모든 파일을 staging area로 이동 (.gitignore에 있는 파일은 제외)
      - git add * : 모든 파일을 stagin area로 이동 (.gitignore에 있는 파일 포함)
- - ### git diff : 파일의 어떤 내용이 변경되었는지 확인할 수 있다.
+ - ### git diff : 파일의 어떤 내용이 변경되었는지 확인하는 명령
      - git diff --staged : staging area의 파일의 상태도 확인할 수 있다.
      - git diff [hash1] [hash2] : 두 커밋간의 상태를 비교한다.
  - ### git commit : Staging Area에 있는 변경 사항을 Git Repository로 옮겨주는 명령(버전 추가 명령)
