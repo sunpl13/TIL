@@ -26,3 +26,19 @@
     - 커밋 메세지는 현재형으로
     - 의미 없는 커밋 메세지는 없도록(ex) commit1... commit2..)
     - commit message에 맞게 해당되는 내용만 커밋
+- ### git log : commit에 대한 로그 확인
+  - git log -p : log 뿐만 아니라 파일 수정 내용까지 확인 가능(git diff와 동일)
+  - git log --oneline : 해쉬코드 앞자리 와 간단한 커밋 메세지만 보여줌(간단하게 보여주기)
+  - git log --reverse : 커밋을 남긴 순서부터 보여주기(첫번 째 커밋부터)
+  - git log -숫자 : 최근 숫자 갯수의 commit을 확인
+  - git log --author="작성자" : 작성자가 commit한 것들만 보여줌
+  - git log --before="날짜" : 지정된 날짜 이전 commit들만 보여준다.
+  - git log --grep="타이틀" : 제목 중 타이틀이 포함된 commit을 확인
+  - git log -S "문자" : commit의 전체 컨텐츠 안에서 문자가 포함된 commit을 확인
+  - git log 파일 : 해당 파일의 대한 로그를 확인
+- ### git tag : 특정한 commit을 북마크 할 때 쓰는 명령어(주로 릴리즈에 사용)
+  - git tag 태그 : 태그 작성
+  - git tag 문자열 [해쉬코드] : 특정 해쉬코드에 문자열 작성
+  - git tag 문자열 [해쉬코드] -am "문자열" : 태그에 추가로 정보를 입력할 때 사용
+  - git tag : 만들어진 모든 태그 확인
+  - gia tag -l "태그명" : 태그명이 포함된 모든 태그 확인
