@@ -32,7 +32,7 @@
   - git log --reverse : 커밋을 남긴 순서부터 보여주기(첫번 째 커밋부터)
   - git log -숫자 : 최근 숫자 갯수의 commit을 확인
   - git log --author="작성자" : 작성자가 commit한 것들만 보여줌
-  - git log --before="날짜" : 지정된 날짜 이전 commit들만 보여준다.
+  - git log --before="날짜" : 지정된 날짜 이전 commit들만 보여줌
   - git log --grep="타이틀" : 제목 중 타이틀이 포함된 commit을 확인
   - git log -S "문자" : commit의 전체 컨텐츠 안에서 문자가 포함된 commit을 확인
   - git log 파일 : 해당 파일의 대한 로그를 확인
