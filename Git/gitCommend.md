@@ -42,3 +42,14 @@
   - git tag 문자열 [해쉬코드] -am "문자열" : 태그에 추가로 정보를 입력할 때 사용
   - git tag : 만들어진 모든 태그 확인
   - gia tag -l "태그명" : 태그명이 포함된 모든 태그 확인
+- ### git branch : local에 있는 모든 branch를 보여주는 명령어
+  - git branch --all : 서버에 있는 모든 branch들의 정보를 보여준다.
+  - git branch [브랜치명] : [브랜치 명]이라는 새로운 브랜치를 만든다.
+  - git switch [브랜치명] : [브랜치 명]인 브랜치로 이동
+  - git switch -C [브랜치명] : [브랜치명]이라는 브랜치를 만들고 바로 해당 브랜치로 이동
+  - git checkout [해쉬코드] : 해당 해쉬코드로 이동(HEAD가 해당 커밋들 가리킴)
+  - git checkout [브랜치명] : 해당 브랜치로 이동(HEAD가 해당 브랜치를 가리킴)
+  - git checkout -b [브랜치명] : [브랜치명]이라는 브랜치를 만들고 바로 해당 브랜치로 이동
+  - git branch -v : local의 브랜치들과 가장 최근 커밋까지 볼 수 있다.
+  - git branch --move [바꿀 브랜치 명] [새로운 브랜치 명] : 브랜치 명을 변경
+  - git branch -d [브랜치명] : 해당 브랜치 삭제
