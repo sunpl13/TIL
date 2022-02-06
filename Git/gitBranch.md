@@ -23,3 +23,22 @@
 1. 따로 지정하지 않는 이상 master 브랜치 한 줄기에서 commit이 발생
 2. 보통 master branch에는 코드가 검증이 되고 기능에 문제가 없는 `검증된` 코드들을 commit
 3. 기능별로, 리팩토링 별로, 버그픽스 별로 branch를 만들어서 작업을 하게되면 병렬적으로 작업이 가능해서 `업무 효율성`이 증가
+
+<br/>
+<br/>
+
+## Merge
+- ### `서로 다른 두 버전을 합치는 과정` 
+
+
+<br/>
+<br/>
+
+## Fast-Forword-Merge
+![capture_stepup1_4_1](https://user-images.githubusercontent.com/68778883/152684011-22b34309-cd4a-4b8e-927b-412faca931a9.png)
+<br/>
+<br/>
+위와 같이 master 브랜치에서 commit이 있다가 master 브랜치에서 뻗어나온 bugfix 브랜치에서 작업을 하고 commit이 생겼을 때, master 브랜치에서 **_이후에 변경사항이 발생하지 않으면_** master 브랜치를 bugfix의 commit이 생긴 위치로 이동시키는 병합 방법
+<br/>
+<br/>
+![capture_stepup1_4_2](https://user-images.githubusercontent.com/68778883/152684034-9bba473a-e439-4d83-a9cb-7b9620dc49b2.png)
