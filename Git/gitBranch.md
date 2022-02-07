@@ -42,3 +42,12 @@
 <br/>
 <br/>
 ![capture_stepup1_4_2](https://user-images.githubusercontent.com/68778883/152684034-9bba473a-e439-4d83-a9cb-7b9620dc49b2.png)
+
+<br/>
+<br/>
+
+## 3-Way-merge
+![images](https://user-images.githubusercontent.com/68778883/152755855-78f36077-002a-4df0-9065-92fb2eb5a3a9.png)
+<br/>
+<br/>
+master 브랜치에서 작업을 하다가 새로운 브랜치를 분기시켜 작업을 하고 작업이 완료 되어 master 브랜치에 머지를 하려 할때 base에 새로운 commit이 생겼을 때, 이 commit들을 병합할 때, base와 각 브랜치 2개가 참조하는 commit을 기준으로 병합을 진행하는 merge 방법
