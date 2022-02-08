@@ -53,3 +53,6 @@
   - git branch -v : local의 브랜치들과 가장 최근 커밋까지 볼 수 있다.
   - git branch --move [바꿀 브랜치 명] [새로운 브랜치 명] : 브랜치 명을 변경
   - git branch -d [브랜치명] : 해당 브랜치 삭제
+- ### git merge : 병합 방법
+  - git merge --abort : Conflict 발생 시 병합 취소 명령어
+- ### git rebase : commit을 rebase 하는 명령어

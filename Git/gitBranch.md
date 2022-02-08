@@ -51,3 +51,13 @@
 <br/>
 <br/>
 master 브랜치에서 작업을 하다가 새로운 브랜치를 분기시켜 작업을 하고 작업이 완료 되어 master 브랜치에 머지를 하려 할때 base에 새로운 commit이 생겼을 때, 이 commit들을 병합할 때, base와 각 브랜치 2개가 참조하는 commit을 기준으로 병합을 진행하는 merge 방법
+
+<br/>
+<br/>
+
+## git rebase
+![image](https://user-images.githubusercontent.com/68778883/152955129-82b2ada0-981d-4cb2-89e2-65d9df560d8a.png)
+
+<br/>
+
+![basic-rebase-3](https://user-images.githubusercontent.com/68778883/152955169-c378e2ef-e86b-4429-b16c-bbb4fef65d0c.png)
