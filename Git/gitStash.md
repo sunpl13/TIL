@@ -5,3 +5,4 @@
 - ## git stash는 Modified이면서 Tracked인 파일을 보관한다.
   - Tracked 상태인 파일을 수정한 경우
   - Staging Area에 있는 파일
+- ## Untracked인 파일은 stash 에 저장이 되지 않는다.

@@ -56,3 +56,15 @@
 - ### git merge : 병합 방법
   - git merge --abort : Conflict 발생 시 병합 취소 명령어
 - ### git rebase : commit을 rebase 하는 명령어
+- ### git stash : 작업한 내용들을 stash에 저장하기 위한 명령어(아무것도 입력 안할 시 git stash push와 동일)
+  - git stash push -m "stash 제목" : stash를 제목과 함께 저장
+  - git stash push -m "stash 제목 " --keep-index : staging area에 있는 파일들은 기존 그대로 staging area에 유지하고 나머지를 stash에 저장하기 위한 명령어
+  - git stash -u : untracked까지 포함해서 stash에 저장
+  - git stash list : 전체적인 stash의 리스트를 확인하는 명령어
+  - git stash show [stash id] : 특정 stash의 수정사항 확인하는 명령어
+  - git stash show [stash id] -p : 특정 stash의 세부 수정사항을 확인하는 명령어
+  - git stash apply [stash id] : 특정 stash를 다시 working directory로 불러옴(stash 목록은 유지)
+  - git stash pop : stash stack의 가장 위에있는 목록을 가져옴(stash 해당 목록은 사라짐)
+  - git stash drop [stash id] : 특정 stash 삭제
+  - git stash clear : 전체 stash list 삭제
+  - git stash branch [브랜치명] : stash stack의 가장 위에 있는 것을 가져오면서 새로운 브랜치를 만들고 이동
