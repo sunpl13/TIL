@@ -68,3 +68,6 @@
   - git stash drop [stash id] : 특정 stash 삭제
   - git stash clear : 전체 stash list 삭제
   - git stash branch [브랜치명] : stash stack의 가장 위에 있는 것을 가져오면서 새로운 브랜치를 만들고 이동
+- ### git restore [파일 이름] : working directory 안에 있는 특정 파일 초기화
+  - git restore --staged [파일이름] : Staging Area에 있는 파일을 Working Directort로 가져옴
+  - -git restore --source=[HEAD에서 떨어진 위치] : 특정 파일을 특정 커밋으로 복구
