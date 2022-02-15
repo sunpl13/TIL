@@ -31,7 +31,7 @@
 <br/>
 <br/>
 
-이를 개선하기위해 `DVC(Distributed Version Control)`이 나옴
+이를 개선하기 위해 `DVC(Distributed Version Control)`이 나옴
 
 - ex) Git, mercurial, darcs<br/>
 
