@@ -13,7 +13,7 @@
   - git add 파일이름 : 특정 파일을 staging area로 이동
   - git add \*.확장자 : 특정 확장자 모두를 staging area로 이동
   - git add . : 모든 파일을 staging area로 이동 (.gitignore에 있는 파일은 제외)
-  - git add \* : 모든 파일을 stagin area로 이동 (.gitignore에 있는 파일 포함)
+  - git add \* : 모든 파일을 stagin area로 이동 (.gitignore에 있는 파일 포함)****
 - ### git diff : 파일의 어떤 내용이 변경되었는지 확인하는 명령
   - git diff --staged : staging area의 파일의 상태도 확인할 수 있다.
   - git diff [hash1] [hash2] : 두 커밋간의 상태를 비교한다.
@@ -56,6 +56,7 @@
 - ### git merge : 병합 방법
   - git merge --abort : Conflict 발생 시 병합 취소 명령어
 - ### git rebase : commit을 rebase 하는 명령어
+  - git rebase -i [해쉬코드] : 해당 해쉬코드 `이후` 부터의 commit을 수정하는 명령어
 - ### git stash : 작업한 내용들을 stash에 저장하기 위한 명령어(아무것도 입력 안할 시 git stash push와 동일)
   - git stash push -m "stash 제목" : stash를 제목과 함께 저장
   - git stash push -m "stash 제목 " --keep-index : staging area에 있는 파일들은 기존 그대로 staging area에 유지하고 나머지를 stash에 저장하기 위한 명령어
