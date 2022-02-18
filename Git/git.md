@@ -56,4 +56,4 @@
 <br/>
 
 ## interactive rebase :
-    - 대화형으로 git commit 히스토리를 수정할 수 있게 해줌
+    - 대화형으로 git commit 히스토리를 수정할 수 있게 해줌(단, 수정할 커밋의 하나 전부터 지정해야 한다.)
