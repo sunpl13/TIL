@@ -57,6 +57,9 @@
   - git merge --abort : Conflict 발생 시 병합 취소 명령어
 - ### git rebase : commit을 rebase 하는 명령어
   - git rebase -i [해쉬코드] : 해당 해쉬코드 `이후` 부터의 commit을 수정하는 명령어
+      - git rebase -i, d : 해당 commit을 삭제하는 명령어
+      - git rebase -i, e : 해당 commit을 수정하는 명령어
+      - git rebase -i, s : 해당 commit들을 하나로 합치는 명령어(대표를 할 commit은 pick으로 두고, 나머지 commit을 s 로 바꿈)
 - ### git stash : 작업한 내용들을 stash에 저장하기 위한 명령어(아무것도 입력 안할 시 git stash push와 동일)
   - git stash push -m "stash 제목" : stash를 제목과 함께 저장
   - git stash push -m "stash 제목 " --keep-index : staging area에 있는 파일들은 기존 그대로 staging area에 유지하고 나머지를 stash에 저장하기 위한 명령어
