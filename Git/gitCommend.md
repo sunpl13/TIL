@@ -84,3 +84,10 @@
   - git reset --hard [해쉬코드] : 지정한 해쉬코드로 돌리기
 - ### git reflog : git의 사용 이력을 보여주는 명령어
 - ### git revert [해쉬코드] :  특정 해쉬코드로 돌아가고 commit 기록을 남김
+- ### git blame [파일 url] : 해당 파일의 수정이력을 볼 수 있다.
+- ### git bisect : 어느 순간 부터 오류가 발생하는 부분을 찾을 수 없을 때 commit들 사이에서 이진 탐색을 통해서 오류가 있는 commit을 찾는 명령어
+  - 1. git bisect start(오류가 없던 가장 최근 commit)
+  - 2. git bisect good
+  - 3. git bisect(오류가 난 가장 최근 commit)
+  - 2-3번 반복
+  - git bisect reset
