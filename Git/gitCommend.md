@@ -4,7 +4,7 @@
   ![3 git_status](https://user-images.githubusercontent.com/68778883/150938502-6c77a1bf-49b3-4467-b58e-fd7c115d74f9.png)
   - 작업 위치, commit 상태, tracked,untracked 상태 등을 알 수 있다.
   - git status -s : git의 상태를 간략히 보는 명령
-  - **파일 변경 Tip**
+  - **파일 변경 TIP**
     - 그냥 rm만 사용해서 파일 삭제 시(터미널) Staging Area에 포함되지 않는다.
       git에서 제공하는 git rm 사용시 자동으로 삭제를 tracking 해서 Staging Area에 추가된다.
     - 그냥 mv만 사용해서 파일 위치 이동 시(터미널) Staging Area에 포함되지 않는다.
@@ -21,7 +21,7 @@
   - git commit : 아무 옵션이 없을 시 타이틀과 디스크립션 작성 후 저장
   - git commit -m : 커밋 메세지와 함께 커밋
   - git commit -am : git add . + git commit -m과 동일
-  - **commit Tip**
+  - **commit TIP**
     - 커밋 단위는 작게 세분화해서 커밋
     - 커밋 메세지는 현재형으로
     - 의미 없는 커밋 메세지는 없도록(ex) commit1... commit2..)
