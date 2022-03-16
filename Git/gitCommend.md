@@ -41,7 +41,12 @@
   - git tag 문자열 [해쉬코드] : 특정 해쉬코드에 문자열 작성
   - git tag 문자열 [해쉬코드] -am "문자열" : 태그에 추가로 정보를 입력할 때 사용
   - git tag : 만들어진 모든 태그 확인
-  - gia tag -l "태그명" : 태그명이 포함된 모든 태그 확인
+  - git tag -l "태그명" : 태그명이 포함된 모든 태그 확인
+  - git ls-remote --tags : 원격저장소 모든 태그 조회
+  - git push <remote> <tagName> : 원격 저장소에 태그를 푸시
+  - git push <remote> --tags : 로컬에 저장된 모든 태그를 원격에 푸시
+  - git push <REMOTE> -d <tagName> : 원격 저장소 태그 삭제
+  
 - ### git branch : local에 있는 모든 branch를 보여주는 명령어
   - git branch --all : 서버에 있는 모든 branch들의 정보를 보여준다.
   - git branch [브랜치명] : [브랜치 명]이라는 새로운 브랜치를 만든다.
