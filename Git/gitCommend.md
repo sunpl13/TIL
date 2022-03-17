@@ -55,9 +55,12 @@
   - git checkout [해쉬코드] : 해당 해쉬코드로 이동(HEAD가 해당 커밋들 가리킴)
   - git checkout [브랜치명] : 해당 브랜치로 이동(HEAD가 해당 브랜치를 가리킴)
   - git checkout -b [브랜치명] : [브랜치명]이라는 브랜치를 만들고 바로 해당 브랜치로 이동
+  - git checkout -t origin/[브랜치명] : 원격 저장소의 [브랜치명] 브랜치를 가져오는 명령어
   - git branch -v : local의 브랜치들과 가장 최근 커밋까지 볼 수 있다.
   - git branch --move [바꿀 브랜치 명] [새로운 브랜치 명] : 브랜치 명을 변경
   - git branch -d [브랜치명] : 해당 브랜치 삭제
+  - git branch -r : 원격 저장소에 있는 branch 리스트를 보는 명령어
+  - git branch -a : 로컬, 원격 저장소 모두를 볼 수 있는 명령어
 - ### git merge : 병합 방법
   - git merge --abort : Conflict 발생 시 병합 취소 명령어
 - ### git rebase : commit을 rebase 하는 명령어
@@ -96,3 +99,5 @@
   - 3. git bisect(오류가 난 가장 최근 commit)
   - 2-3번 반복
   - git bisect reset
+
+- ### git remote update : 원격에 있는 브랜치를 새로 업데이트 하는 명령어 
