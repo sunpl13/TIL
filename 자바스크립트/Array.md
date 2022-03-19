@@ -63,3 +63,52 @@ typeof arr; //object
 - 연속적으로 이어져 있지 않을 수도 있다.
   - 이를 **희소배열**이라 한다.
 - 자바스크립트의 <span style="color : #ff4d56; font-weight : bolder">배열은 일반적인 배열의 동작을 흉내낸 특수한 객체</span>
+
+```javascript
+// "16.2. 프로퍼티 어트리뷰트와 프로퍼티 디스크립터 객체" 참고
+console.log(Object.getOwnPropertyDescriptors([1, 2, 3]));
+/*
+{
+  '0': {value: 1, writable: true, enumerable: true, configurable: true}
+  '1': {value: 2, writable: true, enumerable: true, configurable: true}
+  '2': {value: 3, writable: true, enumerable: true, configurable: true}
+  length: {value: 3, writable: true, enumerable: false, configurable: false}
+}
+*/
+```
+- 자바스크립트 배열은 <u>인덱스를 나타내는 문자열을 프로퍼티 키로 가지며</u> <u>length 프로퍼티를 갖는 특수한 객체이다.</u>
+- 자바스크립트 배열의 요소는 프로퍼티 값이다.
+- 어떤 타입의 값이라도 배열의 요소가 될 수 있다.(자바스크립트에서 사용할 수 있는 모든 값은 객체의 프로퍼티 값이 될 수 있기 때문)
+
+```javascript
+const arr = [
+  'string',
+  10,
+  true,
+  null,
+  undefined,
+  NaN,
+  Infinity,
+  [ ],
+  { },
+  function () {}
+];
+```
+<br/>
+
+### 자바스크립트 배열의 장단점
+- 일반적인 배열은 인덱스로 요소에 빠르게 접근할 수 있다.
+  - 특정 요소를 검색하거나 요소를 삽입, 삭제에 경우에는 효율적이지 않음
+- 자바스크립트 배열은 해시테이블로 구현된 객체이므로 일반적인 배열보다 성능적인 면에서 느릴 수 밖에 없다.
+  - 특정 요소를 검색하거나 요소를 삽입 또는 삭제하는 경우에는 일반적인 배열보다 빠른 성능 기대
+
+<br/>
+
+즉, 자바스크립트는 인덱스로 배열 요소에 접근하는 경우에는 일반적인 배열보다 느리지만, **특정 요소를 검색하거나 요소를 삽입, 삭제하는 경우에는 일반적인 배열보다 빠르다.** <br/>
+배열 요소에 접근할 때 일반적인 배열보다 느릴 수밖에 없는 구조적인 단점을 보완하기 위해 모던 자바스크립트 엔진은 배열을 일반 객체와 구별하여 좀 더 배열처럼 동작하도록 최적화하여 구현했다.
+
+
+<br/>
+<br/>
+
+# length 프로퍼티와 희소 배열
