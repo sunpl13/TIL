@@ -210,3 +210,306 @@ console.log(Object.getOwnPropertyDescriptors(sparse));
 
 <br/>
 <br/>
+
+# 4. 배열 생성
+## 1. 배열 리터럴
+- 가장 일반적이고 간편한 방법.
+- 0개 이상의 요소를 쉼표로 구분하여 대괄호로 묶는 방식
+
+<br/>
+
+```javascript
+const arr = [1, 2, 3];
+console.log(arr.length); // 3
+```
+
+배열 리터럴에 요소를 생략하면 희소배열이 생성된다.
+```javascript
+const arr = [1, , 3]; // 희소 배열
+
+// 희소 배열의 length는 배열의 실제 요소 개수보다 언제나 크다.
+console.log(arr.length); // 3
+console.log(arr);        // [1, empty, 3]
+console.log(arr[1]);     // undefined, 프로퍼티 키가 '1'인 프로퍼티가 존재하지 않기 때문
+```
+
+<br/>
+<br/>
+
+## 2. Array 생성자 함수
+Array 생성자 함수를 통해 배열을 생성할 수도 있다. <br/>
+<span style="color:#ff4d56">※ 주의 : Array 생성자 함수는 전달된 인수의 개수에 따라 다르게 동작한다.</span>
+
+<br/>
+
+```javascript
+const arr = new Array(10);
+
+console.log(arr); // [empty × 10]
+console.log(arr.length); // 10
+
+//전달된 인수가 1개이고 숫자인 경우 length 프로퍼티 값이 인수인 배열을 생성
+//희소 배열이 생성됨
+
+
+console.log(Object.getOwnPropertyDescriptors(arr));
+/*
+{
+  length: {value: 10, writable: true, enumerable: false, configurable: false}
+}
+*/
+```
+
+<br/>
+
+```javascript
+// 배열은 요소를 최대 4,294,967,295개 가질 수 있다.
+new Array(4294967295);
+
+// 전달된 인수가 0 ~ 4,294,967,295를 벗어나면 RangeError가 발생한다.
+new Array(4294967296); // RangeError: Invalid array length
+
+// 전달된 인수가 음수이면 에러가 발생한다.
+new Array(-1); // RangeError: Invalid array length
+```
+
+<br/>
+
+```javascript
+new Array(); // -> []
+// 전달된 인수가 없는 경우 빈 배열을 생성 = 배열 리터럴 []과 동일
+```
+<br/>
+
+```javascript
+// 전달된 인수가 2개 이상이면 인수를 요소로 갖는 배열을 생성한다.
+new Array(1, 2, 3); // -> [1, 2, 3]
+
+// 전달된 인수가 1개지만 숫자가 아니면 인수를 요소로 갖는 배열을 생성한다.
+new Array({}); // -> [{}]
+```
+
+<br/>
+<br/>
+
+## 3. Array.of
+```javascript
+// 전달된 인수가 1개이고 숫자이더라도 인수를 요소로 갖는 배열을 생성한다.
+Array.of(1); // -> [1]
+
+Array.of(1, 2, 3); // -> [1, 2, 3]
+
+Array.of('string'); // -> ['string']
+```
+- ES6에서 도입된 메서드
+- 전달된 인수를 요소로 갖는 배열을 생성
+- Array 생성자 함수와 다르게 인수가 1개이고 숫자더라도 인수를 요소로 갖는 배열을 생성
+
+
+<br/>
+<br/>
+
+## 4. Array.from
+```javascript
+// 유사 배열 객체를 변환하여 배열을 생성한다.
+Array.from({ length: 2, 0: 'a', 1: 'b' }); // -> ['a', 'b']
+
+// 이터러블을 변환하여 배열을 생성한다. 문자열은 이터러블이다.
+Array.from('Hello'); // -> ['H', 'e', 'l', 'l', 'o']
+```
+유사 배열 객체 또는 이터러블 객체를 인수로 전달받아 배열로 변환하여 반환
+
+<br/>
+
+```javascript
+// 유사 배열 객체를 변환하여 배열을 생성한다.
+Array.from({ length: 2, 0: 'a', 1: 'b' }); // -> ['a', 'b']
+
+// 이터러블을 변환하여 배열을 생성한다. 문자열은 이터러블이다.
+Array.from('Hello'); // -> ['H', 'e', 'l', 'l', 'o']
+```
+- Array.from 메서드를 사용하면 두 번째 인수로 전달한 콜백 함수를 통해 값을 만들면서 요소를 채울 수 있다.
+
+
+<br/>
+<br/>
+
+# 5. 배열 요소의 참조
+- 배열의 요소를 참조할 때에는 대괄호 표기법([])을 사용
+- 대괄호 안에는 인덱스가 와야하면 정수로 평가되는 표현식이라면 인덱스 대신 사용할 수 있다.
+
+```javascript
+const arr = [1, 2];
+
+// 인덱스가 0인 요소를 참조
+console.log(arr[0]); // 1
+// 인덱스가 1인 요소를 참조
+console.log(arr[1]); // 2
+```
+
+<br/>
+
+```javascript
+const arr = [1, 2];
+
+// 인덱스가 2인 요소를 참조. 배열 arr에는 인덱스가 2인 요소가 존재하지 않는다.
+console.log(arr[2]); // undefined
+```
+배열은 인덱스를 나타내는 문자열을 프로퍼티 키로 갖는 `객체`기 때문에 존재하지 않는 프로퍼티 키로 객체의 프로퍼티에 접근했을 때 undefined를 반환한다.
+
+<br/>
+<br/>
+
+# 6. 배열 요소의 추가와 갱신
+```javascript
+const arr = [0];
+
+// 배열 요소의 추가
+arr[1] = 1;
+
+console.log(arr); // [0, 1]
+console.log(arr.length); // 2
+```
+- 존재하지 않는 인덱스를 사용해 값을 할당하면 새로운 요소가 추가됨
+
+```javascript
+arr[100] = 100;
+
+console.log(arr); // [0, 1, empty × 98, 100]
+console.log(arr.length); // 101
+```
+length 프로퍼티 값보다 큰 인덱스로 새로운 요소를 추가하면 `희소배열`이 된다.
+
+<br/>
+
+```javascript
+// 요소값의 갱신
+arr[1] = 10;
+
+console.log(arr); // [0, 10, empty × 98, 100]
+```
+이미 있는 요소에 값을 재할당하면 값이 갱신된다.
+
+<br/>
+
+```javascript
+const arr = [];
+
+// 배열 요소의 추가
+arr[0] = 1;
+arr['1'] = 2;
+
+// 프로퍼티 추가
+arr['foo'] = 3;
+arr.bar = 4;
+arr[1.1] = 5;
+arr[-1] = 6;
+
+console.log(arr); // [1, 2, foo: 3, bar: 4, '1.1': 5, '-1': 6]
+
+// 프로퍼티는 length에 영향을 주지 않는다.
+console.log(arr.length); // 2
+```
+- 인덱스는 요소의 위치를 나타내므로 반드시 0 이상의 정수를 사용해야 한다.
+- 정수 이외의 값을 인덱스처럼 생성하면 요소가 아닌 프로퍼티가 생성된다.
+- 이때 추가된 프로퍼티는 length 프로퍼티 값에 영향을 주지 않는다.
+
+<br/>
+<br/>
+
+# 7. 배열 요소의 삭제
+
+```javascript
+const arr = [1, 2, 3];
+
+// 배열 요소의 삭제
+delete arr[1];
+console.log(arr); // [1, empty, 3]
+
+// length 프로퍼티에 영향을 주지 않는다. 즉, 희소 배열이 된다.
+console.log(arr.length); // 3
+```
+배열은 객체기 때문에 배열의 특정 요소를 삭제하기 위해서 delete 연산자를 사용할 수 있다.
+<br/>
+하지만 delete 연산자는 객체의 프로퍼티 자체를 삭제하기 때문에 delete 연산자로 특정 요소를 삭제하면 `희소 배열`이 된다.
+
+<br/>
+
+```javascript
+const arr = [1, 2, 3];
+
+// Array.prototype.splice(삭제를 시작할 인덱스, 삭제할 요소 수)
+// arr[1]부터 1개의 요소를 제거
+arr.splice(1, 1);
+console.log(arr); // [1, 3]
+
+// length 프로퍼티가 자동 갱신된다.
+console.log(arr.length); // 2
+```
+희소 배열을 만들지 않으면서 특정 요소를 완전히 삭제하려면 **Array.prototype.splice 메서드를 사용하는 것이 좋다.**
+
+<br/>
+<br/>
+
+# 8. 배열 메서드
+- 원본 배열을 직접 변경하는 메서드
+  - 외부 상태를 직접 변경하는 부수 효과가 있기 때문에 사용 시 주의해야 한다.
+- 원본 배열을 직접 변경하지 않고 새로운 배열을 생성하여 반환하는 메서드
+- 초창기 배열 메서드는 원본 배열을 직접 변경하는 경우가 많다.
+
+<br/>
+
+- <span style="background-color : #f7ddbe">[Array.isArray](#1-arrayisarray)</span>
+- [Array.prototype.indexOf](#2-arrayprototypeindexof)
+- [Array.prototype.push](#3-arrayprototypepush)
+- [Array.prototype.pop](#4-arrayprototypepop)
+- [Array.prototype.unshift](#5-arrayprototypeunshift)
+- [Array.prototype.shift](#6-arrayprototypeshift)
+- [Array.prototype.concat](#7-arrayprototypeconcat)
+- [Array.prototype.splice](#8-arrayprototypesplice)
+- [Array.prototype.slice](#9-arrayprototypeslice)
+- [Array.prototype.join](#10-arrayprototypejoin)
+- [Array.prototype.reverse](#11-arrayprototypereverse)
+- [Array.prototype.fill](#12-arrayprototypefill)
+- [Array.prototype.includes](#13-arrayprototypeincludes)
+- [Array.prototype.flat](#14-arrayprototypeflat)
+
+<br/>
+
+## 1. Array.isArray
+```javascript
+// true
+Array.isArray([]);
+Array.isArray([1, 2]);
+Array.isArray(new Array());
+
+// false
+Array.isArray();
+Array.isArray({});
+Array.isArray(null);
+Array.isArray(undefined);
+Array.isArray(1);
+Array.isArray('Array');
+Array.isArray(true);
+Array.isArray(false);
+Array.isArray({ 0: 1, length: 1 })
+```
+- Array 생성자 함수의 정적 메서드
+- 전달된 인수가 배열이면 true, 배열이 아니면 false를 반환
+
+<br/>
+
+## 2. Array.prototype.indexOf
+
+## 3. Array.prototype.push
+## 4. Array.prototype.pop
+## 5. Array.prototype.unshift
+## 6. Array.prototype.shift
+## 7. Array.prototype.concat
+## 8. Array.prototype.splice
+## 9. Array.prototype.slice
+## 10. Array.prototype.join
+## 11. Array.prototype.reverse
+## 12. Array.prototype.fill
+## 13. Array.prototype.includes
+## 14. Array.prototype.flat
