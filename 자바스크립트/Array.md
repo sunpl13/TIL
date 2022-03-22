@@ -459,20 +459,34 @@ console.log(arr.length); // 2
 
 <br/>
 
-- <span style="background-color : #f7ddbe">[Array.isArray](#1-arrayisarray)</span>
-- [Array.prototype.indexOf](#2-arrayprototypeindexof)
-- [Array.prototype.push](#3-arrayprototypepush)
-- [Array.prototype.pop](#4-arrayprototypepop)
-- [Array.prototype.unshift](#5-arrayprototypeunshift)
-- [Array.prototype.shift](#6-arrayprototypeshift)
-- [Array.prototype.concat](#7-arrayprototypeconcat)
-- [Array.prototype.splice](#8-arrayprototypesplice)
-- [Array.prototype.slice](#9-arrayprototypeslice)
-- [Array.prototype.join](#10-arrayprototypejoin)
-- [Array.prototype.reverse](#11-arrayprototypereverse)
-- [Array.prototype.fill](#12-arrayprototypefill)
-- [Array.prototype.includes](#13-arrayprototypeincludes)
-- [Array.prototype.flat](#14-arrayprototypeflat)
+- [1. 배열이란?](#1-배열이란)
+  - [배열의 특징](#배열의-특징)
+- [2. 자바스크립트 배열은 배열이 아니다.](#2-자바스크립트-배열은-배열이-아니다)
+    - [자바스크립트 배열의 장단점](#자바스크립트-배열의-장단점)
+- [3. length 프로퍼티와 희소 배열](#3-length-프로퍼티와-희소-배열)
+- [4. 배열 생성](#4-배열-생성)
+  - [1. 배열 리터럴](#1-배열-리터럴)
+  - [2. Array 생성자 함수](#2-array-생성자-함수)
+  - [3. Array.of](#3-arrayof)
+  - [4. Array.from](#4-arrayfrom)
+- [5. 배열 요소의 참조](#5-배열-요소의-참조)
+- [6. 배열 요소의 추가와 갱신](#6-배열-요소의-추가와-갱신)
+- [7. 배열 요소의 삭제](#7-배열-요소의-삭제)
+- [8. 배열 메서드](#8-배열-메서드)
+  - [1. Array.isArray](#1-arrayisarray)
+  - [2. Array.prototype.indexOf](#2-arrayprototypeindexof)
+  - [<span style="background-color : #f7ddbe">3. Array.prototype.push</span>](#3-arrayprototypepush)
+  - [<span style="background-color : #f7ddbe">4. Array.prototype.pop</span>](#4-arrayprototypepop)
+  - [<span style="background-color : #f7ddbe">5. Array.prototype.unshift</span>](#5-arrayprototypeunshift)
+  - [<span style="background-color : #f7ddbe">6. Array.prototype.shift</span>](#6-arrayprototypeshift)
+  - [7. Array.prototype.concat](#7-arrayprototypeconcat)
+  - [8. Array.prototype.splice](#8-arrayprototypesplice)
+  - [9. Array.prototype.slice](#9-arrayprototypeslice)
+  - [10. Array.prototype.join](#10-arrayprototypejoin)
+  - [11. Array.prototype.reverse](#11-arrayprototypereverse)
+  - [12. Array.prototype.fill](#12-arrayprototypefill)
+  - [13. Array.prototype.includes](#13-arrayprototypeincludes)
+  - [14. Array.prototype.flat](#14-arrayprototypeflat)
 
 <br/>
 
@@ -500,16 +514,127 @@ Array.isArray({ 0: 1, length: 1 })
 <br/>
 
 ## 2. Array.prototype.indexOf
+```javascript
+const arr = [1, 2, 2, 3];
 
-## 3. Array.prototype.push
-## 4. Array.prototype.pop
-## 5. Array.prototype.unshift
-## 6. Array.prototype.shift
+// 배열 arr에서 요소 2를 검색하여 첫 번째로 검색된 요소의 인덱스를 반환한다.
+arr.indexOf(2);    // -> 1
+// 배열 arr에 요소 4가 없으므로 -1을 반환한다.
+arr.indexOf(4);    // -> -1
+// 두 번째 인수는 검색을 시작할 인덱스다. 두 번째 인수를 생략하면 처음부터 검색한다.
+arr.indexOf(2, 2); // -> 2
+```
+- 원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환
+- 원본 배열에 인수로 전달한 요소와 중복되는 요소가 여러개 있다면 첫 번째로 검색된 요소의 인덱스를 반환
+- 원본 배열에 인수로 전달한 요소가 없다면 -1 반환
+- 배열에 **특정 요소가 존재하는지 확인할 때 유용**
+
+
+<br/>
+
+## <span style="background-color : #f7ddbe">3. Array.prototype.push</span>
+```javascript
+const arr = [1, 2];
+
+// 인수로 전달받은 모든 값을 원본 배열 arr의 마지막 요소로 추가하고 변경된 length 값을 반환한다.
+let result = arr.push(3, 4);
+console.log(result); // 4
+
+// push 메서드는 원본 배열을 직접 변경한다.
+console.log(arr); // [1, 2, 3, 4]
+```
+- 인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고 **변경된 length 프로퍼티 값을 반환**
+- 원본 배열을 직접 변경(<span style="color:#58ACFA;  font-weight:700">스프레드 문법을 사용하는 것이 좋다!</span>)
+
+```javascript
+const arr = [1, 2];
+
+// arr.push(3)과 동일한 처리를 한다. 이 방법이 push 메서드보다 빠르다.
+arr[arr.length] = 3;
+console.log(arr); // [1, 2, 3]
+```
+- push 메서드는 성능 면에서 좋지 않으므로 length 프로퍼티를 사용하여 배열의 마지막에 요소를 직접 추가하는 것이 좋다.
+
+<br/>
+
+## <span style="background-color : #f7ddbe">4. Array.prototype.pop</span>
+```javascript
+const arr = [1, 2];
+
+// 원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환한다.
+let result = arr.pop();
+console.log(result); // 2
+
+// pop 메서드는 원본 배열을 직접 변경한다.
+console.log(arr); // [1]
+```
+- 원본 배열에서 마지막 요소를 제거하고 **제거한 요소를 반환**
+- 원본 배열을 직접 변경
+
+<br/>
+
+## <span style="background-color : #f7ddbe">5. Array.prototype.unshift</span>
+```javascript
+const arr = [1, 2];
+
+// 인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length 값을 반환한다.
+let result = arr.unshift(3, 4);
+console.log(result); // 4
+
+// unshift 메서드는 원본 배열을 직접 변경한다.
+console.log(arr); // [3, 4, 1, 2]
+```
+- 인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length 프로퍼티 값을 반환
+- 원본 배열을 직접 변경(<span style="color:#58ACFA;  font-weight:700">스프레드 문법 사용</span>)
+
+<br/>
+
+## <span style="background-color : #f7ddbe">6. Array.prototype.shift</span>
+```javascript
+const arr = [1, 2];
+
+// 원본 배열에서 첫 번째 요소를 제거하고 제거한 요소를 반환한다.
+let result = arr.shift();
+console.log(result); // 1
+
+// shift 메서드는 원본 배열을 직접 변경한다.
+console.log(arr); // [2]
+```
+- 원본 배열에서 첫 번째 요소를 제거하고 **제거한 요소를 반환**
+- 원본 배열을 직접 변경
+
+<br/>
+
+
 ## 7. Array.prototype.concat
+```javascript
+
+```
 ## 8. Array.prototype.splice
+```javascript
+
+```
 ## 9. Array.prototype.slice
+```javascript
+
+```
 ## 10. Array.prototype.join
+```javascript
+
+```
 ## 11. Array.prototype.reverse
+```javascript
+
+```
 ## 12. Array.prototype.fill
+```javascript
+
+```
 ## 13. Array.prototype.includes
+```javascript
+
+```
 ## 14. Array.prototype.flat
+```javascript
+
+```
