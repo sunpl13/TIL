@@ -487,6 +487,17 @@ console.log(arr.length); // 2
   - [12. Array.prototype.fill](#12-arrayprototypefill)
   - [13. Array.prototype.includes](#13-arrayprototypeincludes)
   - [14. Array.prototype.flat](#14-arrayprototypeflat)
+- [9. 배열 고차 함수](#9-배열-고차-함수)
+  - [1. Array.prototype.sort](#1-arrayprototypesort)
+  - [2. Array.prototype.forEach](#2-arrayprototypeforeach)
+  - [3. Array.prototype.map](#3-arrayprototypemap)
+  - [4. Array.prototype.filter](#4-arrayprototypefilter)
+  - [5. Array.prototype.reduce](#5-arrayprototypereduce)
+  - [6. Array.prototype.some](#6-arrayprototypesome)
+  - [7. Array.prototype.every](#7-arrayprototypeevery)
+  - [8. Array.prototype.find](#8-arrayprototypefind)
+  - [9. Array.prototype.findIndex](#9-arrayprototypefindindex)
+  - [10. Array.prototype.flatMap](#10-arrayprototypeflatmap)
 
 <br/>
 
@@ -782,3 +793,85 @@ arr.includes(100); // -> false
 [1, [2, 3, 4, 5]].flat(); // -> [1, 2, 3, 4, 5]
 ```
 - 인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화하는 메서드
+
+<br/>
+<br/>
+
+# 9. 배열 고차 함수
+```
+고차함수 : 함수를 인수로 전달받거나 함수를 반환하는 함수
+```
+- 고차함수의 사용 목적 : 외부 상태의 변경이나 가변 데이터를 피하고 불변성을 지향하는 함수형 프로그래밍에 기반을 둠
+- 함수형 프로그래밍 : 순수함수와 보조함수의 조합을 통해 로직 내에 존재하는 **조건문과 반복문을 제거**하여 복잡성을 해결하고 **변수의 사용을 억제**하여 상태 변경을 피하려는 프로그래밍 패러다임
+
+- [1. Array.prototype.sort](#1-arrayprototypesort)
+- [2. Array.prototype.forEach](#2-arrayprototypeforeach)
+- [3. Array.prototype.map](#3-arrayprototypemap)
+- [4. Array.prototype.filter](#4-arrayprototypefilter)
+- [5. Array.prototype.reduce](#5-arrayprototypereduce)
+- [6. Array.prototype.some](#6-arrayprototypesome)
+- [7. Array.prototype.every](#7-arrayprototypeevery)
+- [8. Array.prototype.find](#8-arrayprototypefind)
+- [9. Array.prototype.findIndex](#9-arrayprototypefindindex)
+- [10. Array.prototype.flatMap](#10-arrayprototypeflatmap)
+
+## 1. Array.prototype.sort
+```javascript
+```
+
+<br/>
+
+## 2. Array.prototype.forEach
+```javascript
+```
+
+<br/>
+
+## 3. Array.prototype.map
+```javascript
+```
+
+<br/>
+
+## 4. Array.prototype.filter
+```javascript
+```
+
+<br/>
+
+## 5. Array.prototype.reduce
+```javascript
+```
+
+<br/>
+
+## 6. Array.prototype.some
+```javascript
+```
+
+<br/>
+
+## 7. Array.prototype.every
+```javascript
+```
+
+<br/>
+
+## 8. Array.prototype.find
+```javascript
+```
+
+<br/>
+
+## 9. Array.prototype.findIndex
+```javascript
+```
+
+<br/>
+
+## 10. Array.prototype.flatMap
+```javascript
+```
+
+<br/>
+
