@@ -817,13 +817,56 @@ arr.includes(100); // -> false
 
 ## 1. Array.prototype.sort
 ```javascript
+const fruits = ['Banana', 'Orange', 'Apple'];
+
+// ascending(오름차순)
+fruits.sort();
+console.log(fruits); // [ 'Apple', 'Banana', 'Orange' ]
+
+// descending(내림차순)
+fruits.reverse();
+console.log(fruits); // [ 'Orange', 'Banana', 'Apple' ]
 ```
+- 배열의 요소를 정렬하는 함수
+  - 기본 정렬 순서는 문자열 Unicode 코드 포인트 순서를 따른
+- 원본 배열을 집접 변경한다.
+- array.sort(fn?)
+  - 숫자의 순서를 정렬할 때에는 인자로 함수를 넣어줘야 한다.
+
 
 <br/>
 
 ## 2. Array.prototype.forEach
 ```javascript
+const numbers = [1, 2, 3];
+let pows = [];
+
+// for 문으로 순회
+for (let i = 0; i < numbers.length; i++) {
+  pows.push(numbers[i] ** 2);
+}
+
+console.log(pows); // [ 1, 4, 9 ]
+
+pows = [];
+
+// forEach 메소드로 순회
+numbers.forEach(function (item) {
+  pows.push(item ** 2);
+});
+
+// ES6 화살표 함수
+// numbers.forEach(item => pows.push(item ** 2));
+
+console.log(pows); // [ 1, 4, 9 ]
 ```
+- for문 대신 사용할 수 있는 메서드
+- 배열을 순회하며 주어진 메서드를 실행
+- array.forEach(callBack:(**value**, **index**, **array**))
+  - value : 배열을 순회하는 해당 요소 값
+  - index : 순회하는 배열의 인덱스 값
+  - array : forEach 메서드를 호출한 배열 자체
+- 반환 값은 undefined
 
 <br/>
 
