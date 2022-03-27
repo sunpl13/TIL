@@ -872,7 +872,30 @@ console.log(pows); // [ 1, 4, 9 ]
 
 ## 3. Array.prototype.map
 ```javascript
+const numbers = [1, 4, 9];
+
+// 배열을 순회하며 각 요소에 대하여 인자로 주어진 콜백함수를 실행
+const roots = numbers.map(function (item) {
+  // 반환값이 새로운 배열의 요소가 된다. 반환값이 없으면 새로운 배열은 비어 있다.
+  return Math.sqrt(item);
+});
+
+// 위 코드의 축약표현은 아래와 같다.
+// const roots = numbers.map(Math.sqrt);
+
+// map 메소드는 새로운 배열을 반환한다
+console.log(roots);   // [ 1, 2, 3 ]
+// map 메소드는 원본 배열은 변경하지 않는다
+console.log(numbers); // [ 1, 4, 9 ]
 ```
+- 배열을 순회하며 각 요소에 대해 인자로 주어진 콜백 함수의 반환값으로 새로운 배열을 생성하여 반환
+- array.map(callBack:(**value**, **index**, **array**))
+  - value : 배열을 순회하는 해당 요소 값
+  - index : 순회하는 배열의 인덱스 값
+  - array : map 메서드를 호출한 배열 자체
+- forEach문과 차의점
+  - forEach는 배열을 순회하며 요소 값을 참조하여 무언가를 하기 위한 함수
+  - map은 배열을 순회하며 요소 값을 다른 값으로 매핑하기 위한 함수
 
 <br/>
 
