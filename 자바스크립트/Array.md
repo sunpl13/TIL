@@ -893,21 +893,73 @@ console.log(numbers); // [ 1, 4, 9 ]
   - value : 배열을 순회하는 해당 요소 값
   - index : 순회하는 배열의 인덱스 값
   - array : map 메서드를 호출한 배열 자체
-- forEach문과 차의점
-  - forEach는 배열을 순회하며 요소 값을 참조하여 무언가를 하기 위한 함수
+- forEach문과 차이점
+  - forEach문은 배열을 순회하며 요소 값을 참조하여 무언가를 하기 위한 함수
   - map은 배열을 순회하며 요소 값을 다른 값으로 매핑하기 위한 함수
 
 <br/>
 
 ## 4. Array.prototype.filter
 ```javascript
+const result = [1, 2, 3, 4, 5].filter(function (item, index, self) {
+  console.log(`[${index}] = ${item}`);
+  return item % 2; // 홀수만을 필터링한다 (1은 true로 평가된다)
+});
+
+console.log(result); // [ 1, 3, 5 ]
 ```
+- 배열을 순회하며 각 요소에 대해 인주로 주어진 **콜백함수의 결과가 true인 배열 요소의 값만을 추출한 새로운 배열 반환**
+- array.filter(callBack:(**value**, **index**, **array**))
+  - value : 배열을 순회하는 해당 요소 값
+  - index : 순회하는 배열의 인덱스 값
+  - array : filter 메서드를 호출한 배열 자체
+- 배열에서 특정 케이스에 대한 필터링 용도로 사용
 
 <br/>
 
 ## 5. Array.prototype.reduce
 ```javascript
+const arr = [1, 2, 3, 4, 5];
+
+/*
+previousValue: 이전 콜백의 반환값
+currentValue : 배열 요소의 값
+currentIndex : 인덱스
+array        : 메소드를 호출한 배열, 즉 this
+*/
+// 합산
+const sum = arr.reduce(function (previousValue, currentValue, currentIndex, self) {
+  console.log(previousValue + '+' + currentValue + '=' + (previousValue + currentValue));
+  return previousValue + currentValue; // 결과는 다음 콜백의 첫번째 인자로 전달된다
+});
+
+console.log(sum); // 15: 1~5까지의 합
+/*
+1: 1+2=3
+2: 3+3=6
+3: 6+4=10
+4: 10+5=15
+15
+*/
+
+// 최대값 취득
+const max = arr.reduce(function (pre, cur) {
+  return pre > cur ? pre : cur;
+});
+
+console.log(max); // 5: 최대값
 ```
+![image](https://user-images.githubusercontent.com/68778883/160281497-b426a9ff-674a-4afb-9684-c91a658d3b81.png)
+
+- 배열을 순회하며 각 요소에 대하여 이전 콜백 함수의 실행 반환 값을 전달하여 콜백함수를 실행하고 그 결과를 반환
+-  array.reduce(callBack:(**previous**, **currentValue**, **currentIndex**, s**elf**))
+  - previous : 이전 콜백의 반환 값
+  - currentValue : 현 배열 요소의 요소 값
+  - currentIndex : 인덱스
+  - self : 메소드를 호출한 배열, this
+- reduce 함수의 두번째 인자로 초기 값을 설정해 줄 수 있다.
+  - 초기 값을 설정해주면 에러를 회피할 수 있으므로 **언제나 초기 값을 전달해주는 것이 보다 안전하다**
+
 
 <br/>
 
