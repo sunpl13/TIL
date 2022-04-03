@@ -984,25 +984,83 @@ console.log(max); // 5: 최대값
 
 ## 7. Array.prototype.every
 ```javascript
+// 배열의 모든 요소가 3보다 큰지 확인
+[5, 10, 15].every(item => item > 3); // -> true
+
+// 배열의 모든 요소가 10보다 큰지 확인
+[5, 10, 15].every(item => item > 10); // -> false
+
+// every 메서드를 호출한 배열이 빈 배열인 경우 언제나 true를 반환한다.
+[].every(item => item > 3); // -> true
 ```
+- 배열 요소 중에 콜백 함수를 통해 정의한 조건을 만족하는 요소가 모두 참이면 true, 아니면 false를 반환
+- some 메서드를 호출한 배열이 빈 배열일 경우 언제나 true를 반환
+- 두번째 인수로 this 객체를 전달할 수 있다.
 
 <br/>
 
 ## 8. Array.prototype.find
 ```javascript
+const users = [
+  { id: 1, name: 'Lee' },
+  { id: 2, name: 'Kim' },
+  { id: 2, name: 'Choi' },
+  { id: 3, name: 'Park' }
+];
+
+// id가 2인 첫 번째 요소를 반환한다. find 메서드는 배열이 아니라 요소를 반환한다.
+users.find(user => user.id === 2); // -> {id: 2, name: 'Kim'}
 ```
+- 배열의 요소를 순회하면서 전달된 콜백 함수를 호출하여 반환값이 true인 첫번째 요소를 반환
+- find 메서드는 함수의 반환값이 true인 첫번째 요소인 요소 값을 반환
 
 <br/>
 
 ## 9. Array.prototype.findIndex
 ```javascript
+const users = [
+  { id: 1, name: 'Lee' },
+  { id: 2, name: 'Kim' },
+  { id: 2, name: 'Choi' },
+  { id: 3, name: 'Park' }
+];
+
+// id가 2인 요소의 인덱스를 구한다.
+users.findIndex(user => user.id === 2); // -> 1
+
+// name이 'Park'인 요소의 인덱스를 구한다.
+users.findIndex(user => user.name === 'Park'); // -> 3
+
+// 위와 같이 프로퍼티 키와 프로퍼티 값으로 요소의 인덱스를 구하는 경우
+// 다음과 같이 콜백 함수를 추상화할 수 있다.
+function predicate(key, value) {
+  // key와 value를 기억하는 클로저를 반환
+  return item => item[key] === value;
+}
+
+// id가 2인 요소의 인덱스를 구한다.
+users.findIndex(predicate('id', 2)); // -> 1
+
+// name이 'Park'인 요소의 인덱스를 구한다.
+users.findIndex(predicate('name', 'Park')); // -> 3
 ```
+- 배열의 요소를 순회하면서 전달된 콜백 함수를 호출하여 반환값이 true인 첫번째 인덱스를 반환
+- 콜백 함수의 반환 값이 true가 없다면 -1을 반환
 
 <br/>
 
 ## 10. Array.prototype.flatMap
 ```javascript
-```
+const arr = ['hello', 'world'];
 
-<br/>
+// map과 flat을 순차적으로 실행
+arr.map(x => x.split('')).flat();
+// -> ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+
+// flatMap은 map을 통해 생성된 새로운 배열을 평탄화한다.
+arr.flatMap(x => x.split(''));
+// -> ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+```
+- map 메서드를 통해 생성된 새로운 배열을 평탄화하는 메서드
+- 1단계만 평탄화할 수 있다.
 
