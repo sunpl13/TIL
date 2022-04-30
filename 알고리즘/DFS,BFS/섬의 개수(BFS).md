@@ -136,12 +136,12 @@ function solution(n, m, arr) {
       if (arr[i][j] === 1) {  
         arr[i][j] = 0;
         answer++;
-        dfs(i, j, arr);
+        bfs(i, j, arr);
       }
     }
   }
 
-  function dfs(x, y, arr) {
+  function bfs(x, y, arr) {
     queue.push([x, y]);
     while (queue.length) {
       let [x, y] = queue.shift();
